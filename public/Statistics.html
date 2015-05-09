@@ -1,0 +1,28 @@
+<table class="table">
+<thead>
+	<tr>
+		<th>mep</th>
+		<th>operation</th>
+		<th>provider</th>
+		<th>consumer</th>
+		<th>creation date</th>
+		<th>last updated</th>
+		<th>success</th>
+		<th>error</th>
+		<th>warning</th>
+	</tr>
+</thead>
+<tbody>
+<tr ng-repeat="row in stats | filter:query">
+	<td>{{row.MEP}}</td>
+	<td>{{row.OPERATION}}</td>
+	<td><span class="badge">{{row.PROVIDER}}</span></td>
+	<td><span class="badge">{{row.CONSUMER}}</span></td>
+	<td>{{row.CREATION}}</td>
+	<td>{{row.UPDATED}}</td>
+	<td><span class="text-success">{{row.OK}}</span></td>
+	<td><span class="text-error">{{row.ERR}}</span></td>
+	<td><span class="text-warning">{{row.WARN}}</span></td>
+</tr>
+</tbody>
+</table>

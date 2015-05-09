@@ -1,0 +1,30 @@
+<div>
+<button id="close-modal" class="close" ng-click="close()">&times;</button>
+    <div class="modal-header">
+      <h3>{{root.TRAN_ID}}</h3>
+	<h4> {{root.OBJ_KEY}} </h4>
+    </div>
+    <div class="modal-body">
+    
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Time</th>
+				<th>Sourse</th>
+				<th>Message</th>
+				<th>Status</th>
+			</tr>
+		<thead>
+		<tr ng-repeat="row in tran">
+			<td style="padding-left:{{row.LEVEL * 10}}px; border-left:{{row.LEVEL}}px solid black;">{{row.CREATION_DATE}}</td>
+
+			<td>{{row.SOURCE_QUEUE}}</td>
+			<td>{{ row.MESSAGE }}</td>
+			<td><span class="label label-{{severity[row.SEVERITY]}}">{{row.STATUS}}</status></td>
+		</tr>
+	</table>
+	
+
+	
+	</div>
+</div>
