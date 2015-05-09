@@ -1,13 +1,13 @@
 <div>
 	<table class="table">
-	<thead>
-		<tr>
-		<th>Name</th>
-		<th>Years</th>
-		</tr>
-	</thead>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Years</th>
+			</tr>
+		</thead>
 		<tr ng-repeat="member in members">
-			<td><i class="icon-user"></i>  {{member.firstName}} {{member.lastName}}</td>
+			<td><i class="icon-user"></i>{{member.firstName}} {{member.lastName}}</td>
 			<td>{{member.years}}</td>
 		</tr>
 	</table>

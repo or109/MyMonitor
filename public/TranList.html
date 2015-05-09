@@ -1,5 +1,4 @@
 <div style="margin:20px 20px 0 20px;">
-
 	<ul class="thumbnails">
 		<li class="span3">
 			<div class="thumbnail">
@@ -9,7 +8,6 @@
 				<div class="thumbnail-body">	
 					<h4>Date</h4>
 					<input type="text" datepicker-popup="dd/MM" ng-model="fromTime" max="toTime" min="minTime" show-button-bar="false" show-weeks="false" id="from" class="span2">
-
 					<h4>Hour</h4>
 					<div timepicker ng-model="fromTime" show-meridian="false" minute-step="10"></div>
 				</div>
@@ -38,7 +36,6 @@
 					<select ng-options="op.OPERATION group by op.APP for op in operations | orderBy:'OPERATION'" ng-model="opSelected" ng-change="cSelecte=undefined;loadTrans()">
 						<option value="">-- Choose Operation --</option>
 					</select>
-
 					<h4>Consumers</h4>
 					<select id="consumer" ng-options="c.DETAILS group by c.APP for c in consumers | orderBy:'DETAILS'" ng-model="cSelected" ng-change="opSelected=undefined;loadTrans()">
 						<option value="">-- Choose Consumer --</option>
@@ -48,15 +45,12 @@
 		</li>
 		<li class="span5">
 			<div class="thumbnail">
-
 				<h3>Status <i class="icon-wrench pull-right"></i></h3>
-
 				<div class="thumbnail-body">
 					<h4>Status</h4>
 					<label class="checkbox inline" ng-repeat="item in statusProp | orderBy:'order'" for="{{item.name}}">
 						<input type="checkbox" ng-model="item.value" ng-checked="{{item.value}}" ng-change="loadTrans()" id="{{item.name}}" ng-true-value="{{item.value}}" ng-false-value="0">{{item.name}}
 					</label>
-
 					<h4>Severity</h4>
 					<label class="checkbox inline" ng-repeat="item in severityProp | orderBy:'order'" for="{{item.name}}">
 						<input type="checkbox" ng-model="item.value" ng-checked="{{item.value}}" ng-change="loadTrans()" id="{{item.name}}" ng-true-value="{{item.value}}" ng-false-value="0">{{item.name}}
@@ -64,7 +58,6 @@
 				</div>
 			</div>
 			<div>
-
 				<div class="thumbnail-body">
 					<label for="rows">Display 
 						<select class="span1" id="rows" ng-model="rowsSelected" ng-change="loadTrans()">
@@ -87,10 +80,7 @@
 					</div>
 					<div ng-if="sumStatus<15">
 						Status: <span ng-repeat="statLabel in statusProp | filter:'!0' | orderBy:'order'"><span class="badge badge-info">{{statLabel.name}}</span></span>
-
 					</div>
-
-
 				</div>
 			</div>
 		</li>
@@ -113,37 +103,36 @@
 			<td>{{tran.desc}}</td>
 			<td><span class="badge badge-info" tooltip="{{tran.provider_d}}">{{tran.provider}}</span></td>
 			<td><span tooltip="{{tran.mep}}"><i class="icon-{{mepIcon(tran.mep)}}"></i></span></td>
-			<td><span class="badge badge-info" tooltip="{{tran.consumer_d}}">{{tran.consumer}}</span></d>
-				<td>{{tran.objkey | truncate:50}}</td>
-				<td><span class="label label-{{severity[tran.severity]}}">{{tran.status}}</span></td>
-				<td>{{tran.updated}}</td>
-				<td>
-					<a href="" ng-click="open(tran.id)" class="btn btn-small btn-success">Open <i class="icon-folder-open"></i></a> 
-					<a href="#/transactions/{{tran.id}}" target="_blank" class="btn btn-small btn-info">Go <i class="icon-arrow-right"></i></a>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+			<td><span class="badge badge-info" tooltip="{{tran.consumer_d}}">{{tran.consumer}}</span></d></td>
+			<td>{{tran.objkey | truncate:50}}</td>
+			<td><span class="label label-{{severity[tran.severity]}}">{{tran.status}}</span></td>
+			<td>{{tran.updated}}</td>
+			<td>
+				<a href="" ng-click="open(tran.id)" class="btn btn-small btn-success">Open <i class="icon-folder-open"></i></a> 
+				<a href="#/transactions/{{tran.id}}" target="_blank" class="btn btn-small btn-info">Go <i class="icon-arrow-right"></i></a>
+			</td>
+		</tr>
+	</tbody>
+</table>
 
+<div class="navbar navbar-inverse navbar-fixed-bottom">
+	<div class="navbar-inner">
+		<div style="margin:0 20px">
+			<ul class="nav">
+				<li>From: <span class="badge badge-info">{{fromTime | date:'dd/MM/yy HH:mm'}}</span></li>
+				<li class="divider-vertical"></li>
+				<li>To: <span class="badge badge-info">{{toTime | date:'dd/MM/yy HH:mm'}}</span>
+				</li>
 
-	<div class="navbar navbar-inverse navbar-fixed-bottom">
-		<div class="navbar-inner">
-			<div style="margin:0 20px">
-				<ul class="nav">
-					<li>From: <span class="badge badge-info">{{fromTime | date:'dd/MM/yy HH:mm'}}</span>
-						<li class="divider-vertical"></li>
-						<li>To: <span class="badge badge-info">{{toTime | date:'dd/MM/yy HH:mm'}}</span>
-						</li>
-
-						<li ng-if="!loading" class="divider-vertical"></li>
-						<li ng-if="!loading">
-							Elapsed Time: <span class="badge badge-info">{{timeElapsed}}</span> ms 
-						</li>
-						<li ng-if="!loading" class="divider-vertical"></li>
-						<li ng-if="!loading">
-							Response Timestamp: <span class="badge badge-info">{{responseTime | date:'HH:mm:ss'}}</span>
-						</li>	
-					</ul>
-				</div>
-			</div>
+				<li ng-if="!loading" class="divider-vertical"></li>
+				<li ng-if="!loading">
+					Elapsed Time: <span class="badge badge-info">{{timeElapsed}}</span> ms 
+				</li>
+				<li ng-if="!loading" class="divider-vertical"></li>
+				<li ng-if="!loading">
+					Response Timestamp: <span class="badge badge-info">{{responseTime | date:'HH:mm:ss'}}</span>
+				</li>	
+			</ul>
 		</div>
+	</div>
+</div>

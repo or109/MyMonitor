@@ -14,7 +14,8 @@ var monitorControllers = angular.module('monitorControllers',[]);
 monitorControllers.controller('navCtrl', function($scope, $location, $routeParams){
 	// init the list of pages in the nav
 	$scope.list = [{"title":"Transactions", "link":"/transactions", "icon": "icon-list", "class": null}, 
-				   {"title":"Statistics", "link":"/statistics", "icon": "icon-globe", "class": null}, 
+				   {"title":"Statistics", "link":"/statistics", "icon": "icon-globe", "class": null},
+				   {"title":"Koko", "link":"/", "icon": "icon-cog", "class": null},  
 				   {"title":"About", "link":"/about", "icon": "icon-user", "class": null}];
 	
 	// color the current page in the nav (set to active)

@@ -9,50 +9,46 @@
 	<script src="javascripts/ui-bootstrap-tpls-0.6.0.js"></script>
 	<script src="javascripts/app.js"></script>
 	<script src="javascripts/controllers.js"></script>
-<style>
-#close-modal{
-	padding:6px;
-}
-.modal{
-	width:90% !important;
-	height:60% !important;
-	left:5% !important;
-	margin: -250px 0 0 0 !important;
-}
-[ng-view]{
+	<style>
+	#close-modal{
+		padding:6px;
+	}
+	.modal{
+		width:90% !important;
+		height:60% !important;
+		left:5% !important;
+		margin: -250px 0 0 0 !important;
+	}
+	[ng-view]{
 		height:1px;
 		margin-top:50px;
-	 }
-[ng-click]{
-	cursor: pointer;
-}
-thead th{
-	background-color:#2c2c2c;
-	color:#fff;
-	border-right:1px solid #fff;
-}
-.thumbnail-body{
-	padding:10px 20px;
-}
-</style>
+	}
+	[ng-click]{
+		cursor: pointer;
+	}
+	thead th{
+		background-color:#2c2c2c;
+		color:#fff;
+		border-right:1px solid #fff;
+	}
+	.thumbnail-body{
+		padding:10px 20px;
+	}
+	</style>
 </head>
 <body>
-
-<div class="navbar navbar-inverse navbar-fixed-top">
-<div class="navbar-inner">
-<div style="margin:0 20px">
-	<a class="brand" href="#">Monitor: INT</a>
-	<ul class="nav" ng-controller="navCtrl">
-		<li class="divider-vertical"></li>
-		<li ng-repeat="li in list" ng-class="navClass('{{li.link}}')"><a href="#{{li.link}}"><i class="{{li.icon}} icon-white"></i> {{li.title}}</a></li>
-	</ul>
-	
-	<div class="navbar-search pull-right"><i class="icon-search icon-white"></i> Search <input ng-model="query" pleaceholder="Search" class="search-query"></div>
-</div>
-</div>
-</div>
-
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div style="margin:0 20px">
+				<a class="brand" href="#">Monitor: INT</a>
+				<ul class="nav" ng-controller="navCtrl">
+					<li class="divider-vertical"></li>
+					<li ng-repeat="li in list" ng-class="navClass('{{li.link}}')"><a href="#{{li.link}}"><i class="{{li.icon}} icon-white"></i>{{li.title}}</a></li>
+				</ul>
+				<div class="navbar-search pull-right"><i class="icon-search icon-white"></i> Search <input ng-model="query" pleaceholder="Search" class="search-query"></div>
+			</div>
+		</div>
+	</div>
 	<div ng-view style="margin:50px 20px;"></div>
-
 </body>
 </html>

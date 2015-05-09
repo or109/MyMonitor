@@ -7,6 +7,12 @@ var allTrans = require('./trans');
 var allStats = require('./stats');
 //var allServices = require('./services');
 
+var elasticsearch = require('elasticsearch');
+var elasticClient = new elasticsearch.Client({
+	host: 'localhost:9200'
+  //,log: 'trace'
+});
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -31,8 +37,29 @@ app.get('/subServices.json',function(req,res){
 });
 
 
-app.get('/trans.json',function(req,res){
+/*app.get('/trans.json',function(req,res){
 	res.jsonp(allTrans);
+});*/
+app.get('/trans.json', function (req, res) {
+	//var searchText = req.params.txt;
+
+	elasticClient.search({
+		index: 'monitor',
+		type: 'tran',
+		sort: 'id:desc'
+		//,q: searchText
+	}).then(function (body) {
+		var hits = body.hits.hits;
+		var results = [];
+
+		body.hits.hits.forEach(function (entry) {
+			results.push(entry._source);
+		});
+
+		res.jsonp(results);
+	}, function (error) {
+		console.trace(error.message);
+	});
 });
 
 app.get('/stats.json',function(req,res){
