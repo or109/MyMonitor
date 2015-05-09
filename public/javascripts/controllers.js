@@ -49,7 +49,7 @@ monitorControllers.controller('transCtrl', function ($rootScope, $scope, $filter
   $scope.toTime = new Date();
   
   $scope.rowsSelected = 50;
-  $scope.rows = [50,100,200,500];
+  $scope.rows = [50,100,200,500,1000];
   $scope.loading = false;
   
   $scope.loadTrans = function(){

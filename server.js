@@ -2,6 +2,12 @@ var express        =         require("express");
 var bodyParser     =         require("body-parser");
 var app            =         express();
 
+var allOperations = require('./operations');
+var allTrans = require('./trans');
+var allStats = require('./stats');
+//var allServices = require('./services');
+
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/',function(req,res){
@@ -16,21 +22,25 @@ app.post('/login',function(req,res){
 });
 
 app.get('/subServices.json?id=:id',function(req,res){
-
-	//console.log("got id : "+id);
-  //res.sendFile(__dirname + '/index.html');
-
-
+	// TODO: edit
+	//res.jsonp(allServices);
 });
 
 app.get('/subServices.json',function(req,res){
+	//res.jsonp(allServices);
+});
 
-	//console.log("got id : " + req.body.id);
-  //res.sendFile(__dirname + '/index.html');
+
+app.get('/trans.json',function(req,res){
+	res.jsonp(allTrans);
+});
+
+app.get('/stats.json',function(req,res){
+	res.jsonp(allStats);
 });
 
 app.get('/operations.json',function(req,res){
-	var arrObj = [];
+	/*var arrObj = [];
 	var obj = {};
 
 	obj.ID = '1';
@@ -62,10 +72,10 @@ app.get('/operations.json',function(req,res){
 	res.header('Charset','utf8');
   	//res.send(req.query.callback + '('+ JSON.stringify(obj) + ');');
   	res.jsonp(arrObj)
+  	*/
+
+  	res.jsonp(allOperations);
   });
-
-
-
 
 app.listen(3000,function(){
 	console.log("Started on PORT 3000");
