@@ -20,6 +20,10 @@ app.get('/',function(req,res){
 	res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/search.html',function(req,res){
+	res.sendFile(__dirname + '/search.html');
+});
+
 app.post('/login',function(req,res){
 	var user_name=req.body.user;
 	var password=req.body.password;
